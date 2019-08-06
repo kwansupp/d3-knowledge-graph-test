@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {"id": "Knowledge", "group": 0},
+    {"id": "Innovation", "group": 0},
+    {"id": "Scaling Up", "group": 0},
+    {"id": "Computer Vision", "group": 0},
+    {"id": "Skills", "group": 0},
+    {"id": "Enterprising", "group": 0},
+    {"id": "Leading", "group": 0},
+    {"id": "Creating", "group": 0},
+    {"id": "Communicating", "group": 0},
+    {"id": "Learning", "group": 0},
+    {"id": "Attitudes", "group": 0},
+    {"id": "Boundless", "group": 0},
+    {"id": "Curious", "group": 0},
+    {"id": "Disciplined", "group": 0},
+    {"id": "Eager", "group": 0},
+    {"id": "Social", "group": 0}
+  ],
+  "links": [
+    {"source": "Knowledge", "target": "Innovation"},
+    {"source": "Knowledge", "target": "Scaling Up"},
+    {"source": "Knowledge", "target": "Computer Vision"},
+    {"source": "Skills", "target": "Enterprising"},
+    {"source": "Skills", "target": "Leading"},
+    {"source": "Skills", "target": "Creating"},
+    {"source": "Skills", "target": "Communicating"},
+    {"source": "Skills", "target": "Learning"},
+    {"source": "Attitudes", "target": "Boundless"},
+    {"source": "Attitudes", "target": "Curious"},
+    {"source": "Attitudes", "target": "Disciplined"},
+    {"source": "Attitudes", "target": "Eager"},
+    {"source": "Attitudes", "target": "Social"}
+  ]
+}
