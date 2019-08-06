@@ -1,0 +1,23 @@
+
+#canvas {
+	width: 50%;
+	margin: 20px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+}
+
+#info-box {
+	background-color: lightblue;
+	overflow: auto;
+	width: 50%;
+	margin: 20px;
+}
+
+#info-box p {
+	text-align: center;
+}
+
+.info-card {
+	display: none;
+}

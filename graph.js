@@ -5,7 +5,7 @@ function showData(data) {
     let height = 400
     let width = 400
 
-    let svg = d3.select("body").append("svg")
+    let svg = d3.select("#canvas").append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("class", "canvas")
@@ -47,7 +47,7 @@ function showData(data) {
             .enter().append("g")
             .on("mouseover", mouseover)
             .on("mouseout", mouseout)
-            .on("click", nodeToggle);
+            .on("click", displayInfo);
 
         nodes.append("text")
             .attr("text-anchor", "middle")
@@ -122,16 +122,64 @@ function showData(data) {
 
 }
 
+var infoCards = {
+    "Computer Vision": "node-cv",
+    "Scaling Up": "node-scaleup",
+    "Innovation": "node-innovation",
+    "Enterprising": "node-enterprising", 
+    "Leading": "node-leading", 
+    "Creating": "node-creating", 
+    "Communicating": "node-comm",
+    "Learning": "node-learning",
+    "Boundless": "node-boundless",
+    "Curious": "node-curious",
+    "Disciplined": "node-disciplined",
+    "Eager": "node-eager",
+    "Social": "node-social"
+}
+
+function displayInfo(d) {
+    console.log("show info for", d.id)
+
+    // check all children of #info-box div to see if any has active class
+    active = $('#info-box').children(".active");
+
+    selected = $('#info-box').children("#"+infoCards[d.id]);
+    // check if info card for requested node exists
+    if (selected.length) {
+        //remove active class from previous card and add class to designated card
+        active.hide();
+        active.removeClass("active");
+        selected.addClass("active");
+    } else {
+        // if info card does not exist, display error-card
+        active.hide();
+        active.removeClass("active");
+        div = $('#info-box').children("#no-info");
+        div.addClass("active")
+        div.show();
+    }
+
+    // if active class, make sure display is set to block
+    $('#info-box').children(".active").show();
+
+
+}
+    
+
+
 function nodeToggle(d) {
-    if (d3.select(this).select("circle").attr("class") === "expand") {
+    if (d3.select(this).select("circle").attr("class") === "active") {
         // revert to node
         d3.select(this).select("circle")
             .attr("class", "node")
+            .attr("fill", "black")
 
     } else {
         // add expand class
         d3.select(this).select("circle")
-            .attr("class", "expand")
+            .attr("class", "active")
+            .attr("fill", "steelblue")
             // .transition()
             // .duration(1000)
             // .attr("fill", "gray")
@@ -148,22 +196,21 @@ function mouseover() {
     d3.select(this).select("text").transition()
       .duration(250)
       .attr('font-size', 20);
-  }
+} 
 
-  function mouseout() {
+function mouseout() {
     // console.log(d3.select(this).select("circle").attr("class"));
     if (d3.select(this).select("circle").attr("class") === "expand") {
         d3.select(this).select("circle")
             .attr("r", 5)
-            .attr("fill", "steelblue");
+            // .attr("fill", "steelblue");
     } else {
         d3.select(this).select("circle").transition()
             .duration(250)
             .attr('r', 5)
-            .attr("fill", "black");
+            // .attr("fill", "black");
         d3.select(this).select("text").transition()
             .duration(250)
             .attr('font-size', 14);
     }
-    
-  }
+}
